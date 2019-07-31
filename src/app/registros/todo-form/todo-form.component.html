@@ -1,0 +1,70 @@
+<div class="modal-header ">
+  <!-- <div class="container-fluid"> -->
+    <!-- <div class="row"> -->
+      <!-- <div class="col-sm-12"> -->
+        <h4 class="modal-title">{{createMode ? 'Alta registro' : 'Modificar registro'}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+</div>
+
+<div class="modal-body ">
+  <!-- <div class="container-fluid"> -->
+    <!-- <div class="row"> -->
+      <!-- <div class="col xs-12"> -->
+        <form [formGroup]="todoForm" (ngSubmit)="saveTodo()">
+          <div class="form-group">
+            <label for="valorMinima">Valor mínima*</label>
+            <input type="number" id="valorMinima" placeholder="Valor mínima" class="form-control"
+              formControlName="valorMinima" />
+            <span style="color:Red;"
+              *ngIf="todoForm.controls['valorMinima'].touched && todoForm.controls['valorMinima'].errors?.required">Ingresar
+              valor mínimo.</span>
+          </div>
+          <div class="form-group">
+            <label for="valorMaxima">Valor máxima*</label>
+            <input type="number" id="valorMaxima" placeholder="Valor máxima" class="form-control"
+              formControlName="valorMaxima" />
+            <span style="color:Red;"
+              *ngIf="todoForm.controls['valorMaxima'].touched && todoForm.controls['valorMaxima'].errors?.required">Ingresar
+              valor máximo.</span>
+          </div>
+          <div class="form-group">
+            <label for="fecha">Fecha*</label>
+            <input type="date" id="fecha" placeholder="Fecha" class="form-control" formControlName="fecha" />
+            <span style="color:Red;"
+              *ngIf="todoForm.controls['fecha'].touched && todoForm.controls['fecha'].errors?.required">Ingresar
+              fecha.</span>
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción*</label>
+            <textarea id="descripcion" placeholder="Descripción" class="form-control"
+              formControlName="descripcion"></textarea>
+            <span style="color:Red;"
+              *ngIf="todoForm.controls['descripcion'].touched && todoForm.controls['descripcion'].errors?.required">Descripción
+              es opcional.</span>
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Usuario*</label>
+            <textarea disabled placeholder="Usuario" class="form-control" formControlName="usuario"></textarea>
+          </div>
+        </form>
+      <!-- </div>
+    </div>
+  </div> -->
+</div>
+
+
+<div class="modal-footer ">
+  <!-- <div class="container-fluid"> -->
+    <!-- <div class="row"> -->
+      <!-- <div class="col xs-12"> -->
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+        <button class="btn btn-primary" (click)="saveTodo()" [disabled]="todoForm.invalid">Guardar</button>
+      <!-- </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+</div>

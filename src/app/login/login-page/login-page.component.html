@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-4 mx-auto mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="text-center">Conectarse</h1>
+        <form (submit)="onSubmitLogin()">
+          <div class="form-group">
+            <label for="email">email</label>
+            <input type="email" name="email" #elCorreo id="email" [(ngModel)]="email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" #laClave id="password" [(ngModel)]="password" class="form-control">
+          </div>
+          <input type="submit" value="Enviar" class="btn btn-primary btn-sm btn-block">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="row">
+  <div class="col-md-4 mx-auto mt-5">
+    <div class="card">
+      <div class="card-body text-center">
+        <button class="btn btn-sm btn-facebook"><i class="fa fa-facebook"></i>&nbsp;Facebook</button>
+        <button class="btn btn-sm btn-google"><i class="fa fa-google"></i>&nbsp;Gooble</button>
+        <button class="btn btn-sm btn-twitter"><i class="fa fa-twitter"></i>&nbsp;Twitter</button>
+      </div>
+    </div>
+  </div>
+</div> -->

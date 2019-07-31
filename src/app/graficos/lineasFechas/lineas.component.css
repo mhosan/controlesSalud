@@ -1,0 +1,11 @@
+.axis path, .axis line {
+    fill: #00ff00;
+    stroke: #00ff00;
+    stroke-width: 10px;
+    /*shape-rendering: crispEdges;*/
+  }
+.rayas {
+    fill: #00ff00;
+    stroke: #00ff00;
+    stroke-width: 10px;
+}

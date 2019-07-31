@@ -1,0 +1,30 @@
+<div class="container py-3">
+    <button class="btn btn-primary btn-sm" (click)="clickAddTodo()">Alta registro</button>
+
+    <table class="table table-striped table-sm table-hover" *ngIf="todos && todos.length > 0">
+        <thead>
+            <tr>
+                <th>Mín.</th>
+                <th>Máx.</th>
+                <th>Obs.</th>
+                <th>Fecha</th>
+                <th>Modif.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of todos, let index = index">
+                <!-- <td><input type="checkbox" [checked]="todo.done" (change)="checkedDone(index)" /></td> -->
+                <!-- <td [ngClass]="{'done': todo.done, 'not-done': !todo.done}">{{todo.title}}</td> -->
+                <td>{{todo.valorMinima}}</td>
+                <td>{{todo.valorMaxima}}</td>
+                <td>{{todo.descripcion}}</td>
+                <td>{{todo.fecha | date}}</td>
+                <td>{{todo.lastModifiedDate | date}}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" (click)="handleEditClick(todo)">Modificar</button>
+                    <button class="btn btn-danger btn-sm" (click)="handleDeleteClick(todo.id, index)">Borrar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
