@@ -73,7 +73,7 @@ export class LineasFechasComponent implements OnInit {
       width = 700 - margin.left - margin.right,
       height = 300 - margin.top - margin.bottom;
 
-    // definir la escala en el eje horizontal (X) --------------------------------------------------
+    // definir la escala en el eje horizontal (X) ------------------------------------------------
     const maxX = (d3.max(this.datosMaxima, d => d.fecha));
     const minX = (d3.min(this.datosMaxima, d => d.fecha));
     const xScale = d3.scaleTime()
@@ -85,7 +85,7 @@ export class LineasFechasComponent implements OnInit {
       .tickSizeInner(-height);
       // .ticks(10);
 
-    // definir la escala y el eje Y --------------------------------------------------------------------------
+    // definir la escala y el eje Y --------------------------------------------------------------
     const maxY = (d3.max(this.datosMaxima, d => d.valor));
     const minY = d3.min(this.datosMinima, d => d.valor);
     const yScale = d3.scaleLinear()
