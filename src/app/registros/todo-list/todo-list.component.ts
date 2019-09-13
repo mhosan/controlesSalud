@@ -62,16 +62,16 @@ export class TodoListComponent implements OnInit {
     }
 
   clickAddTodo() {
-    const modal = this.modalService.open(TodoFormComponent);
+  //---------------------------------------------------------------------------------------------
+  // usamos el modalService para abrir el modal con su contenido que va a ser 'TodoFormComponent'
+  //---------------------------------------------------------------------------------------------
+  const modal = this.modalService.open(TodoFormComponent);
     modal.result.then(
       this.handleModalTodoFormClose.bind(this),
       this.handleModalTodoFormClose.bind(this)
     );
   }
 
-  //---------------------------------------------------------------------------------------------
-  // usamos el modalService para abrir el modal con su contenido que va a ser 'TodoFormComponent'
-  //---------------------------------------------------------------------------------------------
   handleEditClick(todo: TodoViewModel) {
     const modal = this.modalService.open(TodoFormComponent);
     modal.result.then(

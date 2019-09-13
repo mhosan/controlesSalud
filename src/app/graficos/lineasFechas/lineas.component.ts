@@ -68,10 +68,10 @@ export class LineasFechasComponent implements OnInit {
   }
 
   armaGrafico() {
-    // Establecemos las dimensiones y los márgenes del gráfico
-    const margin = { top: 5, right: 70, bottom: 55, left: 20 },
-      width = 700 - margin.left - margin.right,
-      height = 300 - margin.top - margin.bottom;
+    // Establecer las dimensiones y los márgenes del gráfico
+    const margin = { top: 5, right: 15, bottom: 55, left: 45 },
+      width = 1000 - margin.left - margin.right,
+      height = 450 - margin.top - margin.bottom;
 
     // definir la escala en el eje horizontal (X) ------------------------------------------------
     const maxX = (d3.max(this.datosMaxima, d => d.fecha));
@@ -81,9 +81,10 @@ export class LineasFechasComponent implements OnInit {
       .range([0, width]);
     // definir el eje X - formatear las fechas ---------------------------------------------------
     const xAxis = d3.axisBottom(xScale)
-      .tickFormat(d3.timeFormat('%d-%m-%Y--%H:%M.hs'))
-      .tickSizeInner(-height);
-      // .ticks(10);
+      //.tickFormat(d3.timeFormat('%d-%m-%Y--%H:%M.hs'))
+      .tickFormat(d3.timeFormat('%d-%m-%Y'))
+      .tickSizeInner(-height)
+      .ticks(15);
 
     // definir la escala y el eje Y --------------------------------------------------------------
     const maxY = (d3.max(this.datosMaxima, d => d.valor));
@@ -107,14 +108,14 @@ export class LineasFechasComponent implements OnInit {
     g.append('g')
       .attr('transform', 'translate(' + margin.left + ',' + (height + margin.top) + ')')
       .call(xAxis)
-      .attr('stroke-dasharray', '2,2')
-      .attr('stroke-width', 0.3)
+      .attr('stroke-dasharray', '1,2')
+      .attr('stroke-width', 0.1)
       .selectAll('text')
       .style('text-anchor', 'end')
-      .attr('dx', '-.4em')
+      .attr('dx', '-1.2em')
       .attr('dy', '0em')
       .attr('transform', function (d) {
-        return 'rotate(-30)';
+        return 'rotate(-45)';
       });
       // .append('text')
       // .attr('x', )
@@ -131,17 +132,16 @@ export class LineasFechasComponent implements OnInit {
     g.append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
       .call(yAxis)
-      .attr('stroke-dasharray', '2,2')
-      .attr('stroke-width', 0.3)
+      .attr('stroke-dasharray', '1,2')
+      .attr('stroke-width', 0.1)
       .append('text')
       .attr('transform', 'rotate(-90)')
       .attr('y', 0)
-      .attr('dy', '1.00em')
+      .attr('dy', '-1.90em')
       .style('text-anchor', 'end')
       .attr('font-family', 'Arial')
       .attr('font-size', '12px')
       .attr('fill', 'black')
-      // .text('Presión arterial (mmHg)');
       .text('(mmHg)');
 
     const formatoFechaLocal = d3.timeFormat('%d-%m-%Y');
@@ -177,9 +177,9 @@ export class LineasFechasComponent implements OnInit {
       // .data(this.todos)
       .attr('d', lineaMinima(this.datosMinima))
       .attr('stroke', '#2eb82e')
-      .attr('stroke-width', 2)
+      .attr('stroke-width', 1)
       .attr('fill', 'none')
-      .style('opacity', '0.75' )
+      .style('opacity', '0.50' )
       .on('mouseover', (d, i, n) => {
         d3.select(n[i])
           .transition()
@@ -207,9 +207,9 @@ export class LineasFechasComponent implements OnInit {
       .data(this.datosMaxima)
       .attr('d', lineaMaxima(this.datosMaxima))
       .attr('stroke', '#2eb82e')
-      .attr('stroke-width', 2)
+      .attr('stroke-width', 1)
       .attr('fill', 'none')
-      .style('opacity', '0.75' )
+      .style('opacity', '0.50' )
       .on('mouseover', (d, i, n) => {
         d3.select(n[i])
           .transition()
@@ -239,7 +239,7 @@ export class LineasFechasComponent implements OnInit {
       .attr('cx', d => xScale(d.fecha) + margin.left)
       .attr('cy', d => yScale(d.valor) + margin.top)
       .attr('style', 'fill:#1e7b1e')
-      .attr('r', 4)
+      .attr('r', 3)
       .on('mouseover', (d, i, n) => {
         d3.select(n[i])
           .attr('r', () => 8)
@@ -272,7 +272,7 @@ export class LineasFechasComponent implements OnInit {
       .attr('cx', d => xScale(d.fecha) + margin.left)
       .attr('cy', d => yScale(d.valor) + margin.top)
       .attr('style', 'fill:#1e7b1e')
-      .attr('r', 4)
+      .attr('r', 3)
       .on('mouseover', (d, i, n) => {
         d3.select(n[i])
           .attr('r', () => 8)
